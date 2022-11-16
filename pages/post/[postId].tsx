@@ -1,3 +1,4 @@
+import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
 import React from 'react'
 
@@ -14,7 +15,7 @@ export default function Post({ post }:any) {
     )
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async ()=> {
     let posts: any = await fetch('https://jsonplaceholder.typicode.com/posts')
         .then((response) => response.json())
         .then((data) => data);
@@ -28,7 +29,7 @@ export async function getStaticPaths() {
         fallback: false
     }
 }
-export async function getStaticProps(context:any) {
+export const getStaticProps: GetStaticProps = async (context:any)=> {
     let { params } = context;
     let post = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`)
         .then((response) => response.json())
