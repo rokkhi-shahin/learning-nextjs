@@ -1,8 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import CodeSnippet from '../public/code-snippet.png'
+import '../typescript';
 
 export default function Home() {
+  // console.log("public env",process.env.NEXT_PUBLIC_APP_URL);
+  // console.log("server env: ",process.env.APP_PORT);
   return (
     <div className="py-0 px-8">
       <Head>
@@ -12,11 +15,11 @@ export default function Home() {
       </Head>
 
       <main className="min-h-screen px-16 flex-1 flex flex-col justify-center items-center">
-        <h1 className="leading-5 text-[4rem]">
+        <h1 className="xl:text-[4rem] text-4xl">
           Hunting Coder
         </h1>
         <Image placeholder="blur" className='my-10 border rounded-lg' height={300} width={600} src={CodeSnippet} alt="code-snippet" />
-        <p className="text-2xl">
+        <p className="xl:text-2xl text-xl">
           A blog for hunting coders by a hunting coder
         </p>
 
