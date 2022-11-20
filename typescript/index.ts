@@ -82,7 +82,7 @@ export interface APIResponse2<T>{
 
 const response2: APIResponse2<object> = {
     status: 200,
-    type: ResponseType.SUCCESS,
+    type: ResponseType.SUCCESS, 
     data: {
         name: 'John Doe',
         age: 40  
