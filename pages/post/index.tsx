@@ -1,8 +1,10 @@
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetStaticProps } from 'next';
 import Link from 'next/link';
 import React from 'react'
 
-export default function Posts({posts}:any) {
+export default function Posts({posts,buildTime}:any) {
+    console.log("build time: ",buildTime);
+    
     return (
         <div style={{ textAlign: 'center' }}>
             <h1 className="text-4xl my-4">Posts</h1>
@@ -25,11 +27,13 @@ export default function Posts({posts}:any) {
     )
 }
 
-export const getServerSideProps:GetServerSideProps = async() =>{
-    let posts:any = await fetch('https://jsonplaceholder.typicode.com/posts')
+export const getStaticProps:GetStaticProps = async() =>{
+    let timenow = new Date().toLocaleString()
+    let posts:any = await fetch('https://jsonplaceholder.typicode.com/posts?userId=1')
         .then((response) => response.json())
         .then((data) => data);
     return {
-        props: { posts }
+        props: { posts,buildTime:timenow },
+        revalidate:10
     }
 }

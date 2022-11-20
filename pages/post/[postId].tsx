@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Link from 'next/link';
 import React from 'react'
 
 export default function Post({ post }:any) {
@@ -16,7 +15,7 @@ export default function Post({ post }:any) {
 }
 
 export const getStaticPaths: GetStaticPaths = async ()=> {
-    let posts: any = await fetch('https://jsonplaceholder.typicode.com/posts')
+    let posts: any = await fetch('https://jsonplaceholder.typicode.com/posts?userId=1')
         .then((response) => response.json())
         .then((data) => data);
     const paths = posts.map((post: any) => ({
@@ -38,5 +37,6 @@ export const getStaticProps: GetStaticProps = async (context:any)=> {
     return {
         // Passed to the page component as props
         props: { post },
+        revalidate:10
     }
 }
