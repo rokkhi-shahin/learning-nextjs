@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react'
 
 export default function Posts({posts,buildTime}:any) {
-    console.log("build time: ",buildTime);
+    console.log("build time: ",buildTime``);
     
     return (
         <div style={{ textAlign: 'center' }}>
