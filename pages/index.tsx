@@ -20,6 +20,8 @@ export default function Home() {
         </h1>
         <Image placeholder="blur" className='mt-10 border rounded-lg' height={300} width={600} src={CodeSnippet} alt="code-snippet" />
         <Link className="my-4 text-2xl bg-green-300 border rounded-xl px-5 py-2" href={"/login"}>Login</Link>
+        <Link className="my-4 text-2xl bg-green-300 border rounded-xl px-5 py-2" href={"/post"}>Posts</Link>
+
         <p className="xl:text-2xl text-xl">
           A blog for hunting coders by a hunting coder
         </p>
