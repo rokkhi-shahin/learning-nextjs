@@ -1,5 +1,6 @@
 import { useAtom } from 'jotai'
 import React from 'react'
+import { useHasMounted } from '../../hooks/customHooks';
 import { newTodoAtom, addTodoAtom, todosAtom, toggleTodoAtom } from '../../store/todo.store'
 
 export default function Todo() {
@@ -12,6 +13,11 @@ export default function Todo() {
     addTodo()
     event.preventDefault();
   }
+  const hasMounted = useHasMounted();
+  if (!hasMounted) {
+    return null;
+  }
+ 
   return (
     <div>
       <h1 className="text-4xl my-4 text-center">Practicing <span className='text-bold'>"Jotai"</span></h1>

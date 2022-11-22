@@ -1,4 +1,5 @@
 import { atom } from "jotai";
+import {atomWithStorage} from "jotai/utils"
 
 export interface Todo {
     id: number;
@@ -33,7 +34,7 @@ export const addTodo = (todos: Todo[], text: string): Todo[] =>
 
 // Jotai
 export const newTodoAtom = atom<string>("")
-export const todosAtom = atom<Todo[]>([])
+export const todosAtom = atomWithStorage<Todo[]>('todos',[])
 export const addTodoAtom = atom(
     () => "",
     (get, set) => {
