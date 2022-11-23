@@ -7,7 +7,7 @@ import { useQuery } from 'react-query';
 const fetchPosts = ()=> axios.get('https://jsonplaceholder.typicode.com/posts?userId=1');
 
 export default function Posts({posts}:any) {
-    const {isLoading, data, isError, error, isFetching}: {isLoading:boolean, data:any, isError: boolean, error:any, isFetching: boolean} = useQuery('posts', fetchPosts);
+    const {isLoading, data, isError, error, isFetching}: {isLoading:boolean, data:any, isError: boolean, error:any, isFetching: boolean} = useQuery('posts', fetchPosts,{cacheTime:5000});
     if(isLoading){
         return  <div className="text-center"><h2 className="text-3xl">Lodaing...</h2></div>
     }
