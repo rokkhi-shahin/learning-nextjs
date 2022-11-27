@@ -1,11 +1,15 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { QueryClient } from 'react-query'
 import CodeSnippet from '../public/code-snippet.png'
 
 export default function Home() {
   // console.log("public env",process.env.NEXT_PUBLIC_APP_URL);
   // console.log("server env: ",process.env.APP_PORT);
+  const queryClient = new QueryClient();
+  console.log(queryClient.getQueryData('posts'));
+  
   return (
     <div className="py-0 px-8">
       <Head>
