@@ -7,6 +7,7 @@ import EventLogistics from '../../components/event-detail/event-logistics';
 import EventContent from '../../components/event-detail/event-content';
 import ErrorAlert from '../../components/ui/error-alert';
 import Button from '../../components/ui/button';
+import Head from 'next/head';
 
 function EventDetailPage({ event, hasError }) {
   console.log("c0", event, hasError);
@@ -32,6 +33,10 @@ function EventDetailPage({ event, hasError }) {
   }
   return (
     <Fragment>
+      <Head>
+        <title>{event.title}</title>
+        <meta name='description' content={event.description} />
+      </Head>
       <EventSummary title={event.title} />
       <EventLogistics
         date={event.date}

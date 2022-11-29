@@ -4,6 +4,7 @@ import EventList from '../../components/events/event-list';
 import ResultsTitle from '../../components/events/results-title';
 import Button from '../../components/ui/button';
 import ErrorAlert from '../../components/ui/error-alert';
+import Head from 'next/head';
 
 function FilteredEventsPage({events, hasError, date}) {
   if (hasError) {
@@ -31,10 +32,14 @@ function FilteredEventsPage({events, hasError, date}) {
     );
   }
 
-  const readableDate = new Date(date.numYear, date.numMonth - 1);
+  const readableDate = new Date(date.year, date.month - 1);
 
   return (
     <Fragment>
+       <Head>
+        <title>Filtered Events</title>
+        <meta name='description' content={`all events ${readableDate}`} />
+      </Head>
       <ResultsTitle date={readableDate} />
       <EventList items={events} />
     </Fragment>
