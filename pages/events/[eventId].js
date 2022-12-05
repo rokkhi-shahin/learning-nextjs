@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
-import { useRouter } from 'next/router';
-
+import Comments from '../../components/input/comments';
 import { getEventById, getFeaturedEvents } from '../../helpers/api-util';
 import EventSummary from '../../components/event-detail/event-summary';
 import EventLogistics from '../../components/event-detail/event-logistics';
@@ -10,7 +9,6 @@ import Button from '../../components/ui/button';
 import Head from 'next/head';
 
 function EventDetailPage({ event, hasError }) {
-  console.log("c0", event, hasError);
   if (hasError) {
     return (
       <Fragment>
@@ -24,7 +22,6 @@ function EventDetailPage({ event, hasError }) {
     )
   }
   if (!event) {
-    console.log(hasError);
     return (
       <div className='center'>
         <p>loading...</p>
@@ -47,6 +44,7 @@ function EventDetailPage({ event, hasError }) {
       <EventContent>
         <p>{event.description}</p>
       </EventContent>
+      <Comments eventId={event.id} />
     </Fragment>
   );
 }
